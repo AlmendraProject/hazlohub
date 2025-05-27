@@ -1,0 +1,44 @@
+{
+  "editor.formatOnSave": true, // Formatear automáticamente al guardar
+  "editor.formatOnPaste": true, // Formatear automáticamente al pegar
+  "editor.formatOnType": true, // Formatear mientras escribes
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Usar Prettier como formateador principal
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "editor.wordWrap": "on", // Ajuste de texto automático en la pantalla
+  "editor.tabSize": 2, // Usa indentación de 2 espacios (recomendado para JS/TS)
+  "editor.insertSpaces": true, // Usa espacios en lugar de tabulaciones
+  "files.trimTrailingWhitespace": true, // Elimina espacios en blanco al final de las líneas
+  "files.insertFinalNewline": true, // Agrega una línea en blanco al final del archivo
+
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
+  },
+
+  "javascript.preferences.quoteStyle": "single", // Usa comillas simples
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.importModuleSpecifier": "relative", // Importaciones relativas
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.updateImportsOnFileMove.enabled": "always", // Actualiza importaciones al mover archivos
+
+  "editor.suggestSelection": "first", // Selección automática de la primera sugerencia
+  "editor.quickSuggestions": {
+    "strings": true // Habilita autocompletado dentro de strings
+  },
+
+  "explorer.confirmDragAndDrop": false, // No pedir confirmación al mover archivos
+  "explorer.compactFolders": false // Mostrar todas las carpetas expandidas
+}

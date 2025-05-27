@@ -2,19 +2,26 @@
 
 import type React from "react"
 
-import { Check, Crown, Star, Users, Eye, Shield, Zap } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Check, Crown, Eye, Shield, Star, Users, Zap } from "lucide-react";
 
 interface SubscriptionPlan {
-  id: string
-  name: string
-  price: number
-  duration: string
-  popular?: boolean
-  features: string[]
-  icon: React.ReactNode
-  color: string
+  id: string;
+  name: string;
+  price: number;
+  duration: string;
+  popular?: boolean;
+  features: string[];
+  icon: React.ReactNode;
+  color: string;
 }
 
 const subscriptionPlans: SubscriptionPlan[] = [
@@ -67,17 +74,17 @@ const subscriptionPlans: SubscriptionPlan[] = [
     icon: <Star className="h-6 w-6" />,
     color: "from-yellow-500 to-orange-500",
   },
-]
+];
 
 export default function SubscriptionStore() {
   const handlePurchase = (planId: string, planName: string) => {
     // Aquí implementarías la lógica de compra
-    console.log(`Comprando plan: ${planName} (${planId})`)
-    alert(`Redirigiendo al pago para ${planName}`)
-  }
+    console.log(`Comprando plan: ${planName} (${planId})`);
+    alert(`Redirigiendo al pago para ${planName}`);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12 px-4 mt-20">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -88,7 +95,8 @@ export default function SubscriptionStore() {
             </h1>
           </div>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Destaca tu perfil y accede a funciones exclusivas. Conviértete en un usuario confiable y recomendado.
+            Destaca tu perfil y accede a funciones exclusivas. Conviértete en un
+            usuario confiable y recomendado.
           </p>
         </div>
 
@@ -99,8 +107,7 @@ export default function SubscriptionStore() {
               key={plan.id}
               className={`relative overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
                 plan.popular ? "ring-2 ring-purple-500 shadow-xl" : ""
-              }`}
-            >
+              }`}>
               {plan.popular && (
                 <div className="absolute top-0 left-0 right-0">
                   <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center py-2 text-sm font-semibold">
@@ -109,9 +116,16 @@ export default function SubscriptionStore() {
                 </div>
               )}
 
-              <CardHeader className={`bg-gradient-to-r ${plan.color} text-white ${plan.popular ? "pt-12" : "pt-6"}`}>
-                <div className="flex items-center justify-center mb-4">{plan.icon}</div>
-                <CardTitle className="text-2xl font-bold text-center">{plan.name}</CardTitle>
+              <CardHeader
+                className={`bg-gradient-to-r ${plan.color} text-white ${
+                  plan.popular ? "pt-12" : "pt-6"
+                }`}>
+                <div className="flex items-center justify-center mb-4">
+                  {plan.icon}
+                </div>
+                <CardTitle className="text-2xl font-bold text-center">
+                  {plan.name}
+                </CardTitle>
                 <CardDescription className="text-center text-white/90">
                   Acceso premium por {plan.duration}
                 </CardDescription>
@@ -135,8 +149,7 @@ export default function SubscriptionStore() {
               <CardFooter>
                 <Button
                   className={`w-full bg-gradient-to-r ${plan.color} hover:opacity-90 text-white font-semibold py-3`}
-                  onClick={() => handlePurchase(plan.id, plan.name)}
-                >
+                  onClick={() => handlePurchase(plan.id, plan.name)}>
                   Comprar Ahora
                 </Button>
               </CardFooter>
@@ -146,71 +159,92 @@ export default function SubscriptionStore() {
 
         {/* Benefits Section */}
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8 text-slate-800">¿Por qué elegir Premium?</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-slate-800">
+            ¿Por qué elegir Premium?
+          </h2>
           <div className="grid md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Eye className="h-8 w-8 text-blue-600" />
               </div>
               <h3 className="font-semibold mb-2">Visibilidad Total</h3>
-              <p className="text-slate-600 text-sm">Ve quién visita tu perfil y obtén insights valiosos</p>
+              <p className="text-slate-600 text-sm">
+                Ve quién visita tu perfil y obtén insights valiosos
+              </p>
             </div>
             <div className="text-center">
               <div className="bg-purple-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Users className="h-8 w-8 text-purple-600" />
               </div>
               <h3 className="font-semibold mb-2">Recomendado</h3>
-              <p className="text-slate-600 text-sm">Aparece en la sección de usuarios recomendados</p>
+              <p className="text-slate-600 text-sm">
+                Aparece en la sección de usuarios recomendados
+              </p>
             </div>
             <div className="text-center">
               <div className="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Shield className="h-8 w-8 text-green-600" />
               </div>
               <h3 className="font-semibold mb-2">Confiable</h3>
-              <p className="text-slate-600 text-sm">Badge de usuario verificado y confiable</p>
+              <p className="text-slate-600 text-sm">
+                Badge de usuario verificado y confiable
+              </p>
             </div>
             <div className="text-center">
               <div className="bg-yellow-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
                 <Star className="h-8 w-8 text-yellow-600" />
               </div>
               <h3 className="font-semibold mb-2">Destacado</h3>
-              <p className="text-slate-600 text-sm">Tu perfil aparece destacado para más usuarios</p>
+              <p className="text-slate-600 text-sm">
+                Tu perfil aparece destacado para más usuarios
+              </p>
             </div>
           </div>
         </div>
 
         {/* FAQ Section */}
         <div className="bg-slate-800 text-white rounded-2xl p-8">
-          <h2 className="text-3xl font-bold text-center mb-8">Preguntas Frecuentes</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">
+            Preguntas Frecuentes
+          </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold mb-2">¿Cómo funciona la suscripción?</h3>
+              <h3 className="font-semibold mb-2">
+                ¿Cómo funciona la suscripción?
+              </h3>
               <p className="text-slate-300 text-sm">
-                Una vez que compres tu plan, las funciones premium se activan inmediatamente y duran el tiempo
-                especificado.
+                Una vez que compres tu plan, las funciones premium se activan
+                inmediatamente y duran el tiempo especificado.
               </p>
             </div>
             <div>
               <h3 className="font-semibold mb-2">¿Puedo cambiar de plan?</h3>
               <p className="text-slate-300 text-sm">
-                Sí, puedes actualizar tu plan en cualquier momento. El tiempo restante se ajustará automáticamente.
+                Sí, puedes actualizar tu plan en cualquier momento. El tiempo
+                restante se ajustará automáticamente.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">¿Qué métodos de pago aceptan?</h3>
+              <h3 className="font-semibold mb-2">
+                ¿Qué métodos de pago aceptan?
+              </h3>
               <p className="text-slate-300 text-sm">
-                Aceptamos tarjetas de crédito, débito, transferencias bancarias y billeteras digitales.
+                Aceptamos tarjetas de crédito, débito, transferencias bancarias
+                y billeteras digitales.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">¿Hay renovación automática?</h3>
+              <h3 className="font-semibold mb-2">
+                ¿Hay renovación automática?
+              </h3>
               <p className="text-slate-300 text-sm">
-                No, nuestros planes son de pago único. Puedes renovar manualmente cuando expire tu suscripción.
+                No, nuestros planes son de pago único. Puedes renovar
+                manualmente cuando expire tu suscripción.
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
