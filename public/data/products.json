@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Nombre 1",
+    "description": "Este es el producto A con características únicas.Este es el producto A con características únicas. Este es el producto A con características únicas. Este es el producto A con características únicas.Este es el producto A con características únicas. Este es el producto A con características únicas.Este es el producto A con características únicas.Este es el producto A con características únicas. Este es el producto A con características únicas.Este es el producto A con características únicas.Este es el producto A con características únicas. Este es el producto A con características únicas.",
+    "images": ["/images.jpeg", "/images2.jpeg", "/ryan.jpg"],
+    "ownerAvatar": "/images.jpeg"
+  },
+  {
+    "id": 2,
+    "name": "Nombre 2",
+    "description": "Este es el producto B. Ideal para todo tipo de proyectos.",
+    "images": ["/ryan.jpg", "/images.jpeg", "/images2.jpeg"],
+    "ownerAvatar": "/ryan.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Nombre 3",
+    "description": "Producto C con diseño moderno y eficiente.",
+    "images": ["/images2.jpeg", "/images.jpeg", "/ryan.jpg"],
+    "ownerAvatar": "/images2.jpeg"
+  }
+]

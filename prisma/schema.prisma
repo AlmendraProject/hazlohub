@@ -1,0 +1,33 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Post {
+  id          String   @id @default(uuid())
+  nombre      String
+  titulo      String
+  descripcion String
+  images      Image[]  @relation("PostImages") // Relación uno a muchos con imágenes
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+model Image {
+  id         String   @id @default(uuid())
+  url        String   @unique
+  filename   String
+  mimetype   String
+  size       Int      // en bytes
+  content    String?  // texto opcional relacionado a la imagen
+  post       Post?    @relation("PostImages", fields: [postId], references: [id]) // Relación con Post
+  postId     String?  // Clave foránea opcional
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
