@@ -1,85 +1,39 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import {
-  Book,
-  Briefcase,
-  Building2,
-  Calendar,
-  Compass,
-  HelpCircle,
-  MessageSquare,
-  MoreVertical,
-  Settings,
-  Star,
-  Users,
-} from "lucide-react";
-import { useState } from "react";
+import React from "react";
 
-const FloatingOptionsButton = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+interface FloatingOptionsButtonProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onCreate: () => void;
+}
 
-  const additionalOptions = [
-    { icon: Book, label: "Cursos" },
-    { icon: Calendar, label: "Eventos" },
-    { icon: MessageSquare, label: "Mensajes" },
-    { icon: Settings, label: "Configuración" },
-    { icon: HelpCircle, label: "Ayuda" },
-    { icon: Star, label: "Favoritos" },
-  ];
+const FloatingOptionsButton: React.FC<FloatingOptionsButtonProps> = ({
+  isOpen,
+  onClose,
+  onCreate,
+}) => {
+  if (!isOpen) return null;
 
   return (
-    <div className="fixed left-4 top-1/2 transform -translate-y-1/2 flex flex-col gap-2">
-      <Button
-        variant="ghost"
-        className="w-full justify-start space-x-2 px-2 py-1 h-auto">
-        <Briefcase className="w-4 h-4" />
-        <span className="text-sm hidden md:inline">Trabajo</span>
-      </Button>
-      <Button
-        variant="ghost"
-        className="w-full justify-start space-x-2 px-2 py-1 h-auto">
-        <Users className="w-4 h-4" />
-        <span className="text-sm hidden md:inline">Perfiles</span>
-      </Button>
-      <Button
-        variant="ghost"
-        className="w-full justify-start space-x-2 px-2 py-1 h-auto">
-        <Building2 className="w-4 h-4" />
-        <span className="text-sm hidden md:inline">Empresas</span>
-      </Button>
-      <Button
-        variant="ghost"
-        className="w-full justify-start space-x-2 px-2 py-1 h-auto">
-        <Compass className="w-4 h-4" />
-        <span className="text-sm hidden md:inline">Explorar</span>
-      </Button>
-
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogTrigger asChild>
-          <Button
-            variant="ghost"
-            className="w-full justify-start space-x-2 px-2 py-1 h-auto">
-            <MoreVertical className="w-4 h-4" />
-            <span className="text-sm hidden md:inline">Más</span>
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
-          <div className="flex flex-col gap-2">
-            {additionalOptions.map((option, index) => (
-              <Button
-                key={index}
-                variant="ghost"
-                className="w-full justify-start space-x-2 px-2 py-1 h-auto"
-                onClick={() => setIsModalOpen(false)}>
-                <option.icon className="w-4 h-4" />
-                <span className="text-sm">{option.label}</span>
-              </Button>
-            ))}
-          </div>
-        </DialogContent>
-      </Dialog>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+      <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-sm">
+        <h2 className="text-xl font-semibold mb-4 text-center text-black">
+          ¿Qué deseas hacer?
+        </h2>
+        <div className="flex justify-center gap-4">
+          <button
+            onClick={onCreate}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition">
+            Crear Post
+          </button>
+          <button
+            onClick={onClose}
+            className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition">
+            Cancelar
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

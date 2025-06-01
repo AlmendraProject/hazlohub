@@ -1,10 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import ProductDescription from "./ProductDescription";
 import ScrollButtons from "./ScrollButtons";
 
+// Define the shape of a single product
 type Product = {
   id: string;
   nombre: string;
@@ -14,6 +16,11 @@ type Product = {
     url: string;
   }[];
 };
+
+// Define the shape of the API response
+interface ApiResponse {
+  posts: Product[];
+}
 
 const ImageCarouselWeb = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -27,7 +34,8 @@ const ImageCarouselWeb = () => {
         const res = await fetch("/v1/api/posts", {
           cache: "no-store",
         });
-        const data = await res.json();
+        // Type the response data
+        const data: ApiResponse = await res.json();
         setProducts(data.posts || []);
       } catch (error) {
         console.error("Error al cargar productos:", error);
@@ -83,10 +91,11 @@ const ImageCarouselWeb = () => {
                 <div
                   key={iIndex}
                   className="flex-shrink-0 w-full h-full snap-center relative">
-                  <img
+                  <Image
                     src={img.url}
                     alt={`${product.nombre} ${iIndex + 1}`}
-                    className="w-full h-full object-cover rounded-xl"
+                    fill // Use `fill` for better responsive images
+                    className="object-cover rounded-xl"
                   />
                   {pIndex === productIndex && imageIndex === iIndex && (
                     <div className="absolute top-4 right-4 bg-black/60 text-white text-xs px-3 py-1 rounded">

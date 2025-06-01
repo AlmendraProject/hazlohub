@@ -5,7 +5,7 @@ import { GripVertical, Search, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import CreatePostButton from "./CreatePostButton";
+import FloatingOptionsButton from "./FloatingOptionsButton";
 
 const menuItems = [
   { id: "/", label: "Inicio" },
@@ -128,7 +128,7 @@ const Header = () => {
       )}
 
       {/* Modal para crear post */}
-      <CreatePostButton
+      <FloatingOptionsButton
         isOpen={createPostButton}
         onClose={() => setCreatePostButton(false)}
         onCreate={() => {
